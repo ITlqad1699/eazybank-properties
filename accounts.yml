@@ -1,0 +1,11 @@
+build:
+  version: "2.0.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related env APIs "
+  contactDetails:
+    name: "DaLQA- Developer"
+    email: "lqad1649engineer@eazybank.com"
+  onCallSupport:
+    - "+84 962 654 467"
+
