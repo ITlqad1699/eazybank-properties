@@ -1,0 +1,1 @@
+# eazybank-properties
