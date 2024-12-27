@@ -2,7 +2,7 @@ build:
   version: "2.0.0"
 
 accounts:
-  message: "Welcome to EazyBank accounts related env APIs "
+  message: "Welcome to EazyBank accounts related docker APIs "
   contactDetails:
     name: "DaLQA- Developer"
     email: "lqad1649engineer@eazybank.com"
