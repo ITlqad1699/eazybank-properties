@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Ensure the script stops on errors
+set -e
+
+# List of services with their directories, image names, and tags
+# Format: "directory image_name tag"
+services=(
+  "accounts eazybytes/accounts s6"
+  "cards eazybytes/cards s6"
+  "loans eazybytes/loans s6"
+  "configserver eazybytes/configserver s6" 
+  "eurekaserver eazybytes/eurekaserver s6" 
+)
+
+# Loop through each service and build its Docker image
+for service in "${services[@]}"; do
+  # Split the line into variables
+  IFS=' ' read -r directory image_name tag <<< "$service"
+  
+  echo "Building Docker image for service:"
+  echo "  Directory: $directory"
+  echo "  Image Name: $image_name"
+  echo "  Tag: $tag"
+
+  # Navigate to the directory and build the Docker image
+  if [ -f "$directory/Dockerfile" ]; then
+    docker build -t "${image_name}:${tag}" "$directory"
+  else
+    echo "Dockerfile not found in directory: $directory"
+    exit 1
+  fi
+
+  echo "Successfully built ${image_name}:${tag}"
+done
+
+echo "All images built successfully!"
